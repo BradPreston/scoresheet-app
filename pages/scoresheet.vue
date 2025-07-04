@@ -1,20 +1,17 @@
 <template>
-  <Heading type="h1">Scoresheet</Heading>
-  <UButton :onclick="reset">Start Over</UButton>
+	<div>
+		<Heading type="h1">Scoresheet</Heading>
+		<UButton :onclick="game.reset"
+			><NuxtLink to="/new-game">Reset</NuxtLink></UButton
+		>
+	</div>
 </template>
 
 <script setup lang="ts">
-import { gameStore } from "#imports";
-
-const game = gameStore();
-const { started } = storeToRefs(game);
-
-const reset = async () => {
-  started.value = false;
-  await navigateTo("/new-game");
-};
+import { useGameStore } from '@/stores/game';
+const game = useGameStore();
 
 if (!game.started) {
-  await navigateTo("/new-game");
+	await navigateTo('/new-game');
 }
 </script>

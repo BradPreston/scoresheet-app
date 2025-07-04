@@ -1,16 +1,13 @@
 <template>
-  <Heading type="h1">New Game</Heading>
-  <UButton :onclick="startGame">Start</UButton>
+	<div>
+		<Heading type="h1">New Game</Heading>
+		<UButton :onclick="game.start"
+			><NuxtLink to="/scoresheet">Start</NuxtLink></UButton
+		>
+	</div>
 </template>
 
 <script setup lang="ts">
-import { gameStore } from "#imports";
-const game = gameStore();
-const { started } = storeToRefs(game);
-
-const startGame = async () => {
-  console.log("clicked");
-  started.value = true;
-  await navigateTo("/scoresheet");
-};
+import { useGameStore } from '@/stores/game';
+const game = useGameStore();
 </script>
