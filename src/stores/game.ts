@@ -1,8 +1,8 @@
 import { defineStore } from "pinia";
-import { ref } from "vue";
+import { useStorage } from "@vueuse/core";
 
 export const useGameStore = defineStore('game', () => {
-  const started = ref(false);
+  const started = useStorage('started', false);
   const startGame = () => started.value = true;
   const endGame = () => started.value = false;
   const resetGame = () => started.value = false;
