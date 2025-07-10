@@ -1,9 +1,13 @@
 <script setup lang="ts">
-import TheWelcome from '../components/TheWelcome.vue'
+import { useGameStore } from '@/stores/game';
+import { RouterLink } from 'vue-router';
+
+const gameStore = useGameStore();
 </script>
 
 <template>
   <main>
-    <TheWelcome />
+    Home page!
+    <RouterLink @click="gameStore.startGame" to="/setup">Start game</RouterLink>
   </main>
 </template>
