@@ -1,13 +1,14 @@
 <script setup lang="ts">
-import { useGameStore } from '@/stores/game';
-import { RouterLink } from 'vue-router';
-
-const gameStore = useGameStore();
+import Hero from '@/components/layout/Hero.vue';
 </script>
 
 <template>
   <main>
-    Home page!
-    <RouterLink @click="gameStore.startGame" to="/setup">Start game</RouterLink>
+    <Hero
+      title="Game night just got easier!"
+      subtitle="You handle the fun, we'll handle the scores."
+      :action="{ text: 'Start a game', link: '/setup' }"
+    />
   </main>
 </template>
+
